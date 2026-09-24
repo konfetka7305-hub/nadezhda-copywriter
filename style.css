@@ -1940,3 +1940,35 @@ h2 .хвост-акцент { display: block; font-weight: 600; font-size: .6em;
     #экран-07 .приглашение__текст { align-items: flex-start; gap: 12px; }
     #экран-07 .приглашение__икон { width: 2.5rem; height: 2.5rem; }
   }
+
+/* экран 08 */
+#экран-08 .пятно { top: -6rem; left: -5rem; width: clamp(14rem, 30vw, 22rem); aspect-ratio: 1; opacity: .5; }
+  #экран-08 .финал { position: relative; z-index: 2; max-width: 52rem; margin-inline: auto; }
+  #экран-08 .финал::before { content: ""; position: absolute; inset: clamp(12px, 1.6vw, 20px) calc(-1 * clamp(12px, 1.6vw, 20px))
+      calc(-1 * clamp(12px, 1.6vw, 20px)) clamp(12px, 1.6vw, 20px); border-radius: var(--радиус-плитки); border: var(--нить) solid transparent; }
+  #экран-08 .финал__плита { position: relative; z-index: 1; overflow: hidden; border-radius: var(--радиус-плитки);
+      padding: clamp(44px, 6vw, 80px) clamp(24px, 5vw, 72px) clamp(40px, 5.4vw, 72px); text-align: center; }
+  #экран-08 .финал__плита::before { content: ""; position: absolute; top: 0; left: 50%; width: 3.5rem; height: 4px;
+      margin-left: -1.75rem; border-radius: var(--радиус-малый); }
+  #экран-08 .финал__плита h2 { margin: 0 auto clamp(24px, 3vw, 36px); max-width: 17em; text-wrap: balance; }
+  #экран-08 .финал__кнопка { display: flex; justify-content: center; }
+
+  #экран-08.светлый .финал::before { border-color: color-mix(in srgb, var(--цвет-тёплый) 70%, transparent); }
+  #экран-08.светлый .финал__плита { background: var(--цвет-тёмный-фон); color: var(--цвет-тёмный-текст); box-shadow: var(--тень-глубокая); }
+  #экран-08.светлый .финал__плита::before { background: var(--цвет-тёплый); }
+  #экран-08.светлый .финал__плита h2 { color: var(--цвет-тёмный-текст); }
+
+  #экран-08.тёмный .финал::before { border-color: color-mix(in srgb, var(--цвет-тёплый) 60%, transparent); }
+  #экран-08.тёмный .финал__плита { background: var(--цвет-фон-карточки); color: var(--цвет-текст); box-shadow: var(--тень-глубокая); }
+  #экран-08.тёмный .финал__плита::before { background: var(--цвет-тёплый); }
+
+  #экран-08.тёмный .финал__плита { --цвет-кнопки: var(--цвет-акцент-яркий); --цвет-на-кнопке: var(--цвет-фон);
+      --цвет-кнопки-навёл: color-mix(in srgb, var(--цвет-акцент-яркий) 78%, var(--цвет-текст)); }
+  #экран-08.тёмный .финал__плита h2 { color: var(--цвет-текст); }
+
+  @media (max-width: 899px) {
+    #экран-08 .финал::before { inset: 12px -10px -12px 12px; }
+    #экран-08 .финал__плита { padding: 40px 20px 28px; }
+    #экран-08 .финал__плита h2 { margin-bottom: 22px; }
+    #экран-08 .финал__кнопка .кнопка { width: 100%; justify-content: center; }
+  }
