@@ -1771,3 +1771,48 @@ h2 .хвост-акцент { display: block; font-weight: 600; font-size: .6em;
     #экран-04 .ход__круг { width: 3.5rem; height: 3.5rem; }
     #экран-04 .ход:not(:last-child) .ход__номер::after { top: 3.5rem; }
   }
+
+/* экран 05 */
+#экран-05 .пятно { top: -7rem; left: -6rem; width: clamp(14rem, 32vw, 24rem); aspect-ratio: 1; opacity: .6; }
+  #экран-05 .автор { position: relative; z-index: 2; display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
+      gap: clamp(32px, 6vw, 88px); align-items: center; }
+  #экран-05 .портрет { position: relative; margin: 0; }
+  #экран-05 .портрет::before { content: ""; position: absolute; inset: clamp(12px, 1.6vw, 20px) calc(-1 * clamp(12px, 1.6vw, 20px))
+      calc(-1 * clamp(12px, 1.6vw, 20px)) clamp(12px, 1.6vw, 20px); border-radius: var(--радиус-плитки); border: var(--нить) solid transparent; }
+  #экран-05 .портрет__кадр { position: relative; z-index: 1; overflow: hidden; border-radius: var(--радиус-плитки); }
+  #экран-05 .портрет .заглушка-картинки { aspect-ratio: 4 / 5; min-height: 0; width: 100%; }
+  #экран-05 .рассказ .секция__шапка { margin-bottom: clamp(16px, 2vw, 24px); }
+  #экран-05 .рассказ > p { margin: 0; font-size: var(--кегль-текст); line-height: 1.65; max-width: 34em; }
+  #экран-05 .плитки { list-style: none; margin: clamp(24px, 3vw, 36px) 0 0; padding: 0; display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(12px, 1.6vw, 18px); }
+  #экран-05 .плитка { position: relative; display: flex; flex-direction: column; justify-content: flex-end; gap: .35rem;
+      padding: clamp(20px, 2.2vw, 28px) clamp(18px, 2vw, 26px) clamp(16px, 1.8vw, 22px); border-radius: var(--радиус-плитки); overflow: hidden; }
+  #экран-05 .плитка::before { content: ""; position: absolute; top: 0; left: clamp(18px, 2vw, 26px); width: 2.5rem; height: 4px;
+      border-radius: var(--радиус-малый); }
+  #экран-05 .плитка b { display: block; font-size: var(--кегль-цифра); line-height: 1; font-weight: 700; }
+  #экран-05 .плитка span { display: block; font-size: var(--кегль-текст); line-height: 1.35; }
+
+  #экран-05.светлый .портрет::before { border-color: color-mix(in srgb, var(--цвет-тёплый) 70%, transparent); }
+  #экран-05.светлый .рассказ > p { color: var(--цвет-текст-мягкий); }
+  #экран-05.светлый .плитка { background: var(--цвет-фон-карточки); border: 1px solid var(--цвет-линия);
+      box-shadow: var(--тень); color: var(--цвет-текст); }
+  #экран-05.светлый .плитка::before { background: var(--цвет-тёплый); }
+  #экран-05.светлый .плитка b { color: var(--цвет-акцент-глубже); }
+  #экран-05.светлый .плитка span { color: var(--цвет-текст-мягкий); }
+
+  #экран-05.тёмный .портрет::before { border-color: color-mix(in srgb, var(--цвет-тёплый) 60%, transparent); }
+  #экран-05.тёмный .рассказ > p { color: color-mix(in srgb, var(--цвет-тёмный-текст) 84%, transparent); }
+  #экран-05.тёмный .плитка { background: color-mix(in srgb, var(--цвет-тёплый) 12%, transparent);
+      border: 1px solid color-mix(in srgb, var(--цвет-тёплый) 34%, transparent); color: var(--цвет-тёмный-текст); }
+  #экран-05.тёмный .плитка::before { background: var(--цвет-тёплый-мягкий); }
+  #экран-05.тёмный .плитка b { color: var(--цвет-тёплый-мягкий); }
+  #экран-05.тёмный .плитка span { color: color-mix(in srgb, var(--цвет-тёмный-текст) 82%, transparent); }
+
+  @media (max-width: 899px) {
+    #экран-05 .автор { grid-template-columns: 1fr; gap: 32px; }
+    #экран-05 .портрет { margin-bottom: 14px; }
+    #экран-05 .портрет .заглушка-картинки { aspect-ratio: 16 / 11; }
+    #экран-05 .портрет::before { inset: 12px 12px -12px 12px; }
+    #экран-05 .плитка { gap: .3rem; padding: 20px 16px 14px; }
+    #экран-05 .плитка b { font-size: var(--кегль-h2); }
+  }
