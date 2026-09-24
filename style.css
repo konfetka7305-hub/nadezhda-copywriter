@@ -1737,3 +1737,37 @@ h2 .хвост-акцент { display: block; font-weight: 600; font-size: .6em;
     #экран-03 .итог { padding: 26px 22px 24px; padding-top: 38px; }
     #экран-03 .итог::before { left: 22px; }
   }
+
+/* экран 04 */
+#экран-04 .дорога { position: relative; z-index: 2; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+      gap: clamp(32px, 6vw, 88px); align-items: start; }
+  #экран-04 .дорога .секция__шапка { margin-bottom: 0; }
+  #экран-04 .нить-лента { list-style: none; margin: 0; padding: 0; display: grid; }
+  #экран-04 .ход { display: grid; grid-template-columns: minmax(0, 1fr) 4.5rem; column-gap: clamp(16px, 2.4vw, 32px);
+      padding-bottom: clamp(28px, 4vw, 48px); }
+  #экран-04 .ход:last-child { padding-bottom: 0; }
+  #экран-04 .ход__текст { padding-top: .5rem; }
+  #экран-04 .ход__текст h3 { margin: 0 0 .5rem; font-size: var(--кегль-лид); line-height: 1.3; font-weight: 700; }
+  #экран-04 .ход__текст p { margin: 0; font-size: var(--кегль-текст); line-height: 1.65; }
+  #экран-04 .ход__номер { position: relative; display: flex; justify-content: center; }
+  #экран-04 .ход__круг { position: relative; z-index: 1; width: 4.5rem; height: 4.5rem; border-radius: 50%;
+      display: grid; place-items: center; font-size: var(--кегль-h2); font-weight: 700; line-height: 1; }
+  #экран-04 .ход:not(:last-child) .ход__номер::after { content: ""; position: absolute; left: 50%; top: 4.5rem; bottom: 0;
+      width: var(--нить); transform: translateX(-50%); }
+
+  #экран-04.светлый .ход__текст h3 { color: var(--цвет-текст); }
+  #экран-04.светлый .ход__текст p { color: var(--цвет-текст-мягкий); }
+  #экран-04.светлый .ход__круг { background: var(--цвет-тёплый); color: var(--цвет-на-акценте); box-shadow: var(--тень); }
+  #экран-04.светлый .ход:not(:last-child) .ход__номер::after { background: color-mix(in srgb, var(--цвет-тёплый) 55%, transparent); }
+
+  #экран-04.тёмный .ход__текст h3 { color: var(--цвет-тёмный-текст); }
+  #экран-04.тёмный .ход__текст p { color: color-mix(in srgb, var(--цвет-тёмный-текст) 80%, transparent); }
+  #экран-04.тёмный .ход__круг { background: var(--цвет-тёплый); color: var(--цвет-на-акценте); }
+  #экран-04.тёмный .ход:not(:last-child) .ход__номер::after { background: color-mix(in srgb, var(--цвет-тёплый-мягкий) 45%, transparent); }
+
+  @media (max-width: 899px) {
+    #экран-04 .дорога { grid-template-columns: 1fr; gap: 32px; }
+    #экран-04 .ход { grid-template-columns: minmax(0, 1fr) 3.5rem; }
+    #экран-04 .ход__круг { width: 3.5rem; height: 3.5rem; }
+    #экран-04 .ход:not(:last-child) .ход__номер::after { top: 3.5rem; }
+  }
