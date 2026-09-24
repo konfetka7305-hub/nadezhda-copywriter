@@ -1699,3 +1699,41 @@ h2 .хвост-акцент { display: block; font-weight: 600; font-size: .6em;
     #экран-02 .листок { min-height: 2.75rem; padding-block: 10px; }
     #экран-02 .листок--главный { min-height: 4rem; }
   }
+
+/* экран 03 */
+#экран-03 .пятно { top: -8rem; right: -6rem; width: clamp(14rem, 34vw, 26rem); aspect-ratio: 1; opacity: .7; }
+  #экран-03 .получите { position: relative; z-index: 2; display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+      gap: clamp(28px, 6vw, 88px); align-items: stretch; }
+  #экран-03 .получите .секция__шапка { margin-bottom: clamp(20px, 3vw, 36px); }
+  #экран-03 .линейка { list-style: none; margin: 0; padding: 0; border-top: 1px solid transparent; }
+  #экран-03 .линейка li { display: flex; align-items: flex-start; gap: clamp(14px, 1.6vw, 20px);
+      padding-block: clamp(14px, 1.8vw, 20px); border-bottom: 1px solid transparent;
+      font-size: var(--кегль-лид); line-height: 1.4; font-weight: 600; }
+  #экран-03 .линейка li b { font-weight: 700; }
+  #экран-03 .линейка li span span { font-weight: 400; }
+
+  #экран-03 .итог { position: relative; display: flex; flex-direction: column; justify-content: center; gap: .75rem;
+      padding: clamp(28px, 3.4vw, 44px); border-radius: var(--радиус-плитки); overflow: hidden; }
+  #экран-03 .итог::before { content: ""; position: absolute; top: 0; left: clamp(28px, 3.4vw, 44px);
+      width: 3.25rem; height: 4px; border-radius: var(--радиус-малый); }
+  #экран-03 .итог h3 { margin: 0; font-size: var(--кегль-h2); line-height: 1.15; font-weight: 700; }
+  #экран-03 .итог p { margin: 0; font-size: var(--кегль-лид); line-height: 1.55; }
+
+  #экран-03.светлый .линейка { border-top-color: color-mix(in srgb, var(--цвет-акцент) 30%, transparent); }
+  #экран-03.светлый .линейка li { color: var(--цвет-текст); border-bottom-color: color-mix(in srgb, var(--цвет-акцент) 30%, transparent); }
+  #экран-03.светлый .итог { background: var(--цвет-тёплый-мягкий); color: var(--цвет-на-акценте); box-shadow: var(--тень); }
+  #экран-03.светлый .итог::before { background: var(--цвет-акцент-глубже); }
+  #экран-03.светлый .итог p { color: color-mix(in srgb, var(--цвет-на-акценте) 85%, transparent); }
+
+  #экран-03.тёмный .линейка { border-top-color: color-mix(in srgb, var(--цвет-тёплый) 28%, transparent); }
+  #экран-03.тёмный .линейка li { color: var(--цвет-тёмный-текст); border-bottom-color: color-mix(in srgb, var(--цвет-тёплый) 28%, transparent); }
+  #экран-03.тёмный .итог { background: color-mix(in srgb, var(--цвет-тёплый) 14%, transparent);
+      border: 1px solid color-mix(in srgb, var(--цвет-тёплый) 38%, transparent); color: var(--цвет-тёмный-текст); }
+  #экран-03.тёмный .итог::before { background: var(--цвет-тёплый-мягкий); }
+  #экран-03.тёмный .итог p { color: color-mix(in srgb, var(--цвет-тёмный-текст) 82%, transparent); }
+
+  @media (max-width: 899px) {
+    #экран-03 .получите { grid-template-columns: 1fr; gap: 28px; }
+    #экран-03 .итог { padding: 26px 22px 24px; padding-top: 38px; }
+    #экран-03 .итог::before { left: 22px; }
+  }
