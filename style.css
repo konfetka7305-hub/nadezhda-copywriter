@@ -1783,6 +1783,8 @@ h2 .хвост-акцент { display: block; font-weight: 600; font-size: .6em;
       calc(-1 * clamp(12px, 1.6vw, 20px)) clamp(12px, 1.6vw, 20px); border-radius: var(--радиус-плитки); border: var(--нить) solid transparent; }
   #экран-05 .портрет__кадр { position: relative; z-index: 1; overflow: hidden; border-radius: var(--радиус-плитки); }
   #экран-05 .портрет__кадр img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 30%; }
+
+  #экран-05 .портрет__кадр::after { content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; }
   #экран-05 .рассказ .секция__шапка { margin-bottom: clamp(16px, 2vw, 24px); }
   #экран-05 .рассказ > p { margin: 0; font-size: var(--кегль-текст); line-height: 1.65; max-width: 34em; }
   #экран-05 .плитки { list-style: none; margin: clamp(24px, 3vw, 36px) 0 0; padding: 0; display: grid;
@@ -1795,6 +1797,7 @@ h2 .хвост-акцент { display: block; font-weight: 600; font-size: .6em;
   #экран-05 .плитка span { display: block; font-size: var(--кегль-текст); line-height: 1.35; }
 
   #экран-05.светлый .портрет::before { border-color: color-mix(in srgb, var(--цвет-тёплый) 70%, transparent); }
+  #экран-05.светлый .портрет__кадр::after { background: radial-gradient(100% 100% at 50% 45%, transparent 35%, color-mix(in srgb, var(--цвет-фон-карточки) 85%, transparent) 100%); }
   #экран-05.светлый .рассказ > p { color: var(--цвет-текст-мягкий); }
   #экран-05.светлый .плитка { background: var(--цвет-фон-карточки); border: 1px solid var(--цвет-линия);
       box-shadow: var(--тень); color: var(--цвет-текст); }
@@ -1803,6 +1806,7 @@ h2 .хвост-акцент { display: block; font-weight: 600; font-size: .6em;
   #экран-05.светлый .плитка span { color: var(--цвет-текст-мягкий); }
 
   #экран-05.тёмный .портрет::before { border-color: color-mix(in srgb, var(--цвет-тёплый) 60%, transparent); }
+  #экран-05.тёмный .портрет__кадр::after { background: radial-gradient(100% 100% at 50% 45%, transparent 35%, color-mix(in srgb, var(--цвет-тёмный-фон) 88%, transparent) 100%); }
   #экран-05.тёмный .рассказ > p { color: color-mix(in srgb, var(--цвет-тёмный-текст) 84%, transparent); }
   #экран-05.тёмный .плитка { background: color-mix(in srgb, var(--цвет-тёплый) 12%, transparent);
       border: 1px solid color-mix(in srgb, var(--цвет-тёплый) 34%, transparent); color: var(--цвет-тёмный-текст); }
