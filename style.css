@@ -1157,6 +1157,13 @@ h2 .хвост-акцент { display: block; font-weight: 600; font-size: .6em;
   top: calc(var(--лицо-в-кадре, .28) * 112% + 8em); font-size: 1em; }
 @media (min-width: 900px) { .первый-экран--разворот .чип--автор { display: none; } }
 
+@media (max-width: 374px) { .шапка__лого { white-space: normal; line-height: 1.2; text-wrap: balance; } }
+
+@media (min-width: 601px) and (max-width: 899px) {
+  .первый-экран--разворот .первый-экран__картинка { aspect-ratio: auto; height: min(56vh, 36rem); }
+  .первый-экран--разворот .первый-экран__картинка.картинка--край img { object-position: 50% 30%; }
+}
+
 .первый-экран--сцена, .первый-экран--живая-сцена, .первый-экран--живая-обложка { min-height: 100svh; display: flex; align-items: flex-end; padding-top: calc(var(--отступ-секции) * 2.2); }
 .картинка--сцена, .картинка--видео, .картинка--видео-с-голосом { position: absolute; inset: 0; margin: 0; overflow: hidden; }
 .картинка--сцена img, .картинка--видео video, .картинка--видео img, .картинка--видео-с-голосом video, .картинка--видео-с-голосом img { object-position: 50% 15%; }
@@ -1671,23 +1678,22 @@ h2 .хвост-акцент { display: block; font-weight: 600; font-size: .6em;
 /* экран 02 */
 #экран-02 .листки { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(4, 1fr);
       gap: clamp(14px, 2vw, 24px); }
-  #экран-02 .листок { position: relative; display: flex; align-items: flex-end;
-      min-height: 7.5rem; padding: clamp(20px, 2.4vw, 30px); border-radius: var(--радиус-плитки); overflow: hidden; }
+  #экран-02 .листок { position: relative; display: flex; flex-direction: column; justify-content: flex-start;
+      min-height: 9.5rem; padding: clamp(20px, 2.4vw, 30px); border-radius: var(--радиус-плитки); overflow: hidden; }
   #экран-02 .листок::before { content: ""; position: absolute; top: 0; left: clamp(20px, 2.4vw, 30px);
       width: 3.25rem; height: 4px; border-radius: var(--радиус-малый); }
-  #экран-02 .листок h3 { position: relative; z-index: 1; margin: 0; font-size: var(--кегль-лид); line-height: 1.3; font-weight: 700; }
+  #экран-02 .листок h3 { position: relative; z-index: 1; margin: 0 0 .35rem; font-size: var(--кегль-лид); line-height: 1.3; font-weight: 700; }
+  #экран-02 .листок p { position: relative; z-index: 1; margin: 0; font-size: var(--кегль-текст); line-height: 1.4; }
 
-  #экран-02.светлый .листок { background: var(--цвет-фон-карточки); border: 1px solid var(--цвет-линия);
+  #экран-02.светлый, #экран-02.тёмный { background: var(--цвет-фон); color: var(--цвет-текст); }
+  #экран-02.светлый .листок, #экран-02.тёмный .листок { background: var(--цвет-тёплый-мягкий); border: none;
       box-shadow: var(--тень); color: var(--цвет-текст); }
-  #экран-02.светлый .листок::before { background: var(--цвет-тёплый); }
-
-  #экран-02.тёмный .листок { background: color-mix(in srgb, var(--цвет-тёмный-фон) 55%, transparent);
-      border: 1px solid color-mix(in srgb, var(--цвет-тёплый) 26%, transparent); color: var(--цвет-тёмный-текст); }
-  #экран-02.тёмный .листок::before { background: var(--цвет-тёплый-мягкий); }
+  #экран-02.светлый .листок::before, #экран-02.тёмный .листок::before { background: var(--цвет-тёмный-фон); }
+  #экран-02.светлый .листок p, #экран-02.тёмный .листок p { color: color-mix(in srgb, var(--цвет-текст) 80%, transparent); }
 
   @media (max-width: 899px) {
     #экран-02 .листки { grid-template-columns: 1fr; }
-    #экран-02 .листок { min-height: 2.75rem; padding-block: 10px; }
+    #экран-02 .листок { min-height: 4.5rem; padding-block: 16px; }
   }
 
 /* экран 03 */
@@ -1709,19 +1715,12 @@ h2 .хвост-акцент { display: block; font-weight: 600; font-size: .6em;
   #экран-03 .итог h3 { margin: 0; font-size: var(--кегль-h2); line-height: 1.15; font-weight: 700; }
   #экран-03 .итог p { margin: 0; font-size: var(--кегль-лид); line-height: 1.55; }
 
-  #экран-03.светлый { background: var(--цвет-фон); }
-  #экран-03.светлый .линейка { border-top-color: color-mix(in srgb, var(--цвет-акцент) 30%, transparent); }
-  #экран-03.светлый .линейка li { color: var(--цвет-текст); border-bottom-color: color-mix(in srgb, var(--цвет-акцент) 30%, transparent); }
-  #экран-03.светлый .итог { background: var(--цвет-тёплый-мягкий); color: var(--цвет-на-акценте); box-shadow: var(--тень); }
-  #экран-03.светлый .итог::before { background: var(--цвет-акцент-глубже); }
-  #экран-03.светлый .итог p { color: color-mix(in srgb, var(--цвет-на-акценте) 85%, transparent); }
-
-  #экран-03.тёмный .линейка { border-top-color: color-mix(in srgb, var(--цвет-тёплый) 28%, transparent); }
-  #экран-03.тёмный .линейка li { color: var(--цвет-тёмный-текст); border-bottom-color: color-mix(in srgb, var(--цвет-тёплый) 28%, transparent); }
-  #экран-03.тёмный .итог { background: color-mix(in srgb, var(--цвет-тёплый) 14%, transparent);
-      border: 1px solid color-mix(in srgb, var(--цвет-тёплый) 38%, transparent); color: var(--цвет-тёмный-текст); }
-  #экран-03.тёмный .итог::before { background: var(--цвет-тёплый-мягкий); }
-  #экран-03.тёмный .итог p { color: color-mix(in srgb, var(--цвет-тёмный-текст) 82%, transparent); }
+  #экран-03.светлый, #экран-03.тёмный { background: var(--цвет-фон); color: var(--цвет-текст); }
+  #экран-03.светлый .линейка, #экран-03.тёмный .линейка { border-top-color: color-mix(in srgb, var(--цвет-акцент) 30%, transparent); }
+  #экран-03.светлый .линейка li, #экран-03.тёмный .линейка li { color: var(--цвет-текст); border-bottom-color: color-mix(in srgb, var(--цвет-акцент) 30%, transparent); }
+  #экран-03.светлый .итог, #экран-03.тёмный .итог { background: var(--цвет-тёплый-мягкий); color: var(--цвет-на-акценте); box-shadow: var(--тень); }
+  #экран-03.светлый .итог::before, #экран-03.тёмный .итог::before { background: var(--цвет-акцент-глубже); }
+  #экран-03.светлый .итог p, #экран-03.тёмный .итог p { color: color-mix(in srgb, var(--цвет-на-акценте) 85%, transparent); }
 
   @media (max-width: 899px) {
     #экран-03 .получите { grid-template-columns: 1fr; gap: 28px; }
@@ -1746,15 +1745,12 @@ h2 .хвост-акцент { display: block; font-weight: 600; font-size: .6em;
   #экран-04 .ход:not(:last-child) .ход__номер::after { content: ""; position: absolute; left: 50%; top: 4.5rem; bottom: 0;
       width: var(--нить); transform: translateX(-50%); }
 
-  #экран-04.светлый .ход__текст h3 { color: var(--цвет-текст); }
-  #экран-04.светлый .ход__текст p { color: var(--цвет-текст-мягкий); }
-  #экран-04.светлый .ход__круг { background: var(--цвет-тёплый); color: var(--цвет-на-акценте); box-shadow: var(--тень); }
-  #экран-04.светлый .ход:not(:last-child) .ход__номер::after { background: color-mix(in srgb, var(--цвет-тёплый) 55%, transparent); }
-
-  #экран-04.тёмный .ход__текст h3 { color: var(--цвет-тёмный-текст); }
-  #экран-04.тёмный .ход__текст p { color: color-mix(in srgb, var(--цвет-тёмный-текст) 80%, transparent); }
-  #экран-04.тёмный .ход__круг { background: var(--цвет-тёплый); color: var(--цвет-на-акценте); }
-  #экран-04.тёмный .ход:not(:last-child) .ход__номер::after { background: color-mix(in srgb, var(--цвет-тёплый-мягкий) 45%, transparent); }
+  #экран-04.светлый, #экран-04.тёмный { background: var(--цвет-фон); color: var(--цвет-текст); }
+  #экран-04.светлый .ход__текст h3, #экран-04.тёмный .ход__текст h3 { color: var(--цвет-текст); }
+  #экран-04.светлый .ход__текст p, #экран-04.тёмный .ход__текст p { color: var(--цвет-текст-мягкий); }
+  #экран-04.светлый .ход__круг, #экран-04.тёмный .ход__круг { background: var(--цвет-тёплый); color: var(--цвет-на-акценте); box-shadow: var(--тень); }
+  #экран-04.светлый .ход:not(:last-child) .ход__номер::after,
+  #экран-04.тёмный .ход:not(:last-child) .ход__номер::after { background: color-mix(in srgb, var(--цвет-тёплый) 55%, transparent); }
 
   @media (max-width: 899px) {
     #экран-04 .дорога { grid-template-columns: 1fr; gap: 32px; }
@@ -1786,23 +1782,19 @@ h2 .хвост-акцент { display: block; font-weight: 600; font-size: .6em;
   #экран-05 .плитка b { display: block; font-size: var(--кегль-цифра); line-height: 1; font-weight: 700; }
   #экран-05 .плитка span { display: block; font-size: var(--кегль-текст); line-height: 1.35; }
 
-  #экран-05.светлый .портрет::before { border-color: color-mix(in srgb, var(--цвет-тёплый) 70%, transparent); }
-  #экран-05.светлый .портрет__кадр::after { background: radial-gradient(100% 100% at 50% 45%, transparent 35%, color-mix(in srgb, var(--цвет-фон-карточки) 85%, transparent) 100%); }
-  #экран-05.светлый .рассказ > p { color: var(--цвет-текст-мягкий); }
-  #экран-05.светлый .плитка { background: var(--цвет-фон-карточки); border: 1px solid var(--цвет-линия);
-      box-shadow: var(--тень); color: var(--цвет-текст); }
-  #экран-05.светлый .плитка::before { background: var(--цвет-тёплый); }
-  #экран-05.светлый .плитка b { color: var(--цвет-акцент-глубже); }
-  #экран-05.светлый .плитка span { color: var(--цвет-текст-мягкий); }
-
-  #экран-05.тёмный .портрет::before { border-color: color-mix(in srgb, var(--цвет-тёплый) 60%, transparent); }
-  #экран-05.тёмный .портрет__кадр::after { background: radial-gradient(100% 100% at 50% 45%, transparent 35%, color-mix(in srgb, var(--цвет-тёмный-фон) 88%, transparent) 100%); }
-  #экран-05.тёмный .рассказ > p { color: color-mix(in srgb, var(--цвет-тёмный-текст) 84%, transparent); }
-  #экран-05.тёмный .плитка { background: color-mix(in srgb, var(--цвет-тёплый) 12%, transparent);
-      border: 1px solid color-mix(in srgb, var(--цвет-тёплый) 34%, transparent); color: var(--цвет-тёмный-текст); }
-  #экран-05.тёмный .плитка::before { background: var(--цвет-тёплый-мягкий); }
-  #экран-05.тёмный .плитка b { color: var(--цвет-тёплый-мягкий); }
-  #экран-05.тёмный .плитка span { color: color-mix(in srgb, var(--цвет-тёмный-текст) 82%, transparent); }
+  #экран-05.светлый, #экран-05.тёмный { background: var(--цвет-фон); color: var(--цвет-текст); }
+  #экран-05.светлый .пятно, #экран-05.тёмный .пятно { background: color-mix(in srgb, var(--цвет-тёмный-фон) 18%, transparent); }
+  #экран-05.светлый .портрет::before, #экран-05.тёмный .портрет::before { border-color: color-mix(in srgb, var(--цвет-тёплый) 70%, transparent); }
+  #экран-05.светлый .портрет__кадр::after, #экран-05.тёмный .портрет__кадр::after { background: radial-gradient(100% 100% at 50% 45%, transparent 35%, color-mix(in srgb, var(--цвет-фон-карточки) 85%, transparent) 100%); }
+  #экран-05.светлый .секция__шапка h2, #экран-05.тёмный .секция__шапка h2 { color: var(--цвет-текст); }
+  #экран-05.светлый .секция__лид, #экран-05.тёмный .секция__лид { color: var(--цвет-текст-мягкий); }
+  #экран-05.светлый .рассказ > p, #экран-05.тёмный .рассказ > p { color: var(--цвет-текст-мягкий); }
+  #экран-05.светлый .плитка, #экран-05.тёмный .плитка { background: var(--цвет-тёмный-фон);
+      border: 1px solid color-mix(in srgb, var(--цвет-тёплый) 34%, transparent);
+      color: var(--цвет-тёмный-текст); box-shadow: var(--тень-глубокая); }
+  #экран-05.светлый .плитка::before, #экран-05.тёмный .плитка::before { background: var(--цвет-тёплый-мягкий); }
+  #экран-05.светлый .плитка b, #экран-05.тёмный .плитка b { color: var(--цвет-тёплый-мягкий); }
+  #экран-05.светлый .плитка span, #экран-05.тёмный .плитка span { color: color-mix(in srgb, var(--цвет-тёмный-текст) 82%, transparent); }
 
   @media (max-width: 899px) {
     #экран-05 .автор { grid-template-columns: 1fr; gap: 32px; }
@@ -1842,31 +1834,20 @@ h2 .хвост-акцент { display: block; font-weight: 600; font-size: .6em;
   #экран-06 .прайс .разделитель { margin-block: clamp(16px, 2.4vw, 28px); }
   #экран-06 .прайс .действие-секции { display: flex; justify-content: center; }
 
-  #экран-06.светлый .плита { background: var(--цвет-фон-карточки); border: 1px solid var(--цвет-линия); box-shadow: var(--тень); color: var(--цвет-текст); }
-  #экран-06.светлый .плита::before { background: var(--цвет-тёплый); }
-  #экран-06.светлый .плита .позиция { border-bottom-color: var(--цвет-линия); }
-  #экран-06.светлый .плита .позиция:last-child { border-bottom-color: transparent; }
-  #экран-06.светлый .позиция__ряд { border-bottom-color: color-mix(in srgb, var(--цвет-акцент) 45%, transparent); }
-  #экран-06.светлый .позиция__цена b { color: var(--цвет-акцент-глубже); }
-  #экран-06.светлый .позиции--соцсети .позиция__цена b { color: var(--цвет-текст); }
-  #экран-06.светлый .позиция__цена span { color: var(--цвет-текст-мягкий); }
-  #экран-06.светлый .плитка-пост { background: color-mix(in srgb, var(--цвет-тёплый-мягкий) 38%, var(--цвет-фон-карточки));
+  #экран-06.светлый, #экран-06.тёмный { background: var(--цвет-фон); }
+  #экран-06.светлый .плита, #экран-06.тёмный .плита { background: var(--цвет-фон-карточки);
+      border: 1px solid var(--цвет-линия); box-shadow: var(--тень); color: var(--цвет-текст); }
+  #экран-06.светлый .плита::before, #экран-06.тёмный .плита::before { background: var(--цвет-тёплый); }
+  #экран-06.светлый .плита .позиция, #экран-06.тёмный .плита .позиция { border-bottom-color: var(--цвет-линия); }
+  #экран-06.светлый .плита .позиция:last-child, #экран-06.тёмный .плита .позиция:last-child { border-bottom-color: transparent; }
+  #экран-06.светлый .позиция__ряд, #экран-06.тёмный .позиция__ряд { border-bottom-color: color-mix(in srgb, var(--цвет-акцент) 45%, transparent); }
+  #экран-06.светлый .позиция__цена b, #экран-06.тёмный .позиция__цена b { color: var(--цвет-акцент-глубже); }
+  #экран-06.светлый .позиции--соцсети .позиция__цена b, #экран-06.тёмный .позиции--соцсети .позиция__цена b { color: var(--цвет-текст); }
+  #экран-06.светлый .позиция__цена span, #экран-06.тёмный .позиция__цена span { color: var(--цвет-текст-мягкий); }
+  #экран-06.светлый .плитка-пост, #экран-06.тёмный .плитка-пост { background: color-mix(in srgb, var(--цвет-тёплый-мягкий) 38%, var(--цвет-фон-карточки));
       border: 1px solid color-mix(in srgb, var(--цвет-тёплый) 40%, transparent); color: var(--цвет-текст); }
-  #экран-06.светлый .плитка-пост::before { background: var(--цвет-акцент-глубже); }
-  #экран-06.светлый .итог-строка { color: var(--цвет-текст-мягкий); }
-
-  #экран-06.тёмный .плита { background: color-mix(in srgb, var(--цвет-тёплый) 10%, transparent);
-      border: 1px solid color-mix(in srgb, var(--цвет-тёплый) 34%, transparent); color: var(--цвет-тёмный-текст); }
-  #экран-06.тёмный .плита::before { background: var(--цвет-тёплый-мягкий); }
-  #экран-06.тёмный .плита .позиция { border-bottom-color: color-mix(in srgb, var(--цвет-тёплый) 26%, transparent); }
-  #экран-06.тёмный .плита .позиция:last-child { border-bottom-color: transparent; }
-  #экран-06.тёмный .позиция__ряд { border-bottom-color: color-mix(in srgb, var(--цвет-тёплый) 50%, transparent); }
-  #экран-06.тёмный .позиция__цена b { color: var(--цвет-тёплый-мягкий); }
-  #экран-06.тёмный .позиция__цена span { color: color-mix(in srgb, var(--цвет-тёмный-текст) 80%, transparent); }
-  #экран-06.тёмный .плитка-пост { background: color-mix(in srgb, var(--цвет-тёплый) 18%, transparent);
-      border: 1px solid color-mix(in srgb, var(--цвет-тёплый) 44%, transparent); color: var(--цвет-тёмный-текст); }
-  #экран-06.тёмный .плитка-пост::before { background: var(--цвет-тёплый-мягкий); }
-  #экран-06.тёмный .итог-строка { color: color-mix(in srgb, var(--цвет-тёмный-текст) 86%, transparent); }
+  #экран-06.светлый .плитка-пост::before, #экран-06.тёмный .плитка-пост::before { background: var(--цвет-акцент-глубже); }
+  #экран-06.светлый .итог-строка, #экран-06.тёмный .итог-строка { color: var(--цвет-текст-мягкий); }
 
   @media (max-width: 899px) {
     #экран-06 .плита, #экран-06 .плитка-пост { padding: 4px 18px 4px 24px; }
@@ -1908,23 +1889,15 @@ h2 .хвост-акцент { display: block; font-weight: 600; font-size: .6em;
   #экран-07 .приглашение p { margin: 0; font-size: var(--кегль-текст); line-height: 1.5; }
   #экран-07 .приглашение .кнопка { flex: none; }
 
-  #экран-07.светлый .листок { background: var(--цвет-фон-карточки); border: 1px solid var(--цвет-линия); box-shadow: var(--тень); color: var(--цвет-текст); }
-  #экран-07.светлый .листок::before { background: var(--цвет-тёплый); }
-  #экран-07.светлый .листок__значок { background: color-mix(in srgb, var(--цвет-тёплый-мягкий) 45%, var(--цвет-фон-карточки)); color: var(--цвет-акцент-яркий); }
-  #экран-07.светлый .листок__ответ { color: var(--цвет-текст-мягкий); }
-  #экран-07.светлый .приглашение { background: var(--цвет-тёплый-мягкий); color: var(--цвет-на-акценте); box-shadow: var(--тень); }
-  #экран-07.светлый .приглашение__икон { background: color-mix(in srgb, var(--цвет-фон-карточки) 60%, transparent); color: var(--цвет-на-акценте); }
-  #экран-07.светлый .приглашение p { color: color-mix(in srgb, var(--цвет-на-акценте) 85%, transparent); }
-
-  #экран-07.тёмный .листок { background: color-mix(in srgb, var(--цвет-тёплый) 10%, transparent);
-      border: 1px solid color-mix(in srgb, var(--цвет-тёплый) 30%, transparent); color: var(--цвет-тёмный-текст); }
-  #экран-07.тёмный .листок::before { background: var(--цвет-тёплый-мягкий); }
-  #экран-07.тёмный .листок__значок { background: color-mix(in srgb, var(--цвет-тёплый) 22%, transparent); color: var(--цвет-тёплый-мягкий); }
-  #экран-07.тёмный .листок__ответ { color: color-mix(in srgb, var(--цвет-тёмный-текст) 84%, transparent); }
-  #экран-07.тёмный .приглашение { background: color-mix(in srgb, var(--цвет-тёплый) 16%, transparent);
-      border: 1px solid color-mix(in srgb, var(--цвет-тёплый) 40%, transparent); color: var(--цвет-тёмный-текст); }
-  #экран-07.тёмный .приглашение__икон { background: color-mix(in srgb, var(--цвет-тёплый) 24%, transparent); color: var(--цвет-тёплый-мягкий); }
-  #экран-07.тёмный .приглашение p { color: color-mix(in srgb, var(--цвет-тёмный-текст) 82%, transparent); }
+  #экран-07.светлый, #экран-07.тёмный { background: var(--цвет-фон); }
+  #экран-07.светлый .листок, #экран-07.тёмный .листок { background: var(--цвет-фон-карточки);
+      border: 1px solid var(--цвет-линия); box-shadow: var(--тень); color: var(--цвет-текст); }
+  #экран-07.светлый .листок::before, #экран-07.тёмный .листок::before { background: var(--цвет-тёплый); }
+  #экран-07.светлый .листок__значок, #экран-07.тёмный .листок__значок { background: color-mix(in srgb, var(--цвет-тёплый-мягкий) 45%, var(--цвет-фон-карточки)); color: var(--цвет-акцент-яркий); }
+  #экран-07.светлый .листок__ответ, #экран-07.тёмный .листок__ответ { color: var(--цвет-текст-мягкий); }
+  #экран-07.светлый .приглашение, #экран-07.тёмный .приглашение { background: var(--цвет-тёплый-мягкий); color: var(--цвет-на-акценте); box-shadow: var(--тень); }
+  #экран-07.светлый .приглашение__икон, #экран-07.тёмный .приглашение__икон { background: color-mix(in srgb, var(--цвет-фон-карточки) 60%, transparent); color: var(--цвет-на-акценте); }
+  #экран-07.светлый .приглашение p, #экран-07.тёмный .приглашение p { color: color-mix(in srgb, var(--цвет-на-акценте) 85%, transparent); }
 
   @media (max-width: 899px) {
     #экран-07 .возражения { gap: 24px; }
@@ -1950,18 +1923,15 @@ h2 .хвост-акцент { display: block; font-weight: 600; font-size: .6em;
   #экран-08 .финал__плита h2 { margin: 0 auto clamp(24px, 3vw, 36px); max-width: 17em; text-wrap: balance; }
   #экран-08 .финал__кнопка { display: flex; justify-content: center; }
 
-  #экран-08.светлый .финал::before { border-color: color-mix(in srgb, var(--цвет-тёплый) 70%, transparent); }
-  #экран-08.светлый .финал__плита { background: var(--цвет-тёмный-фон); color: var(--цвет-тёмный-текст); box-shadow: var(--тень-глубокая); }
-  #экран-08.светлый .финал__плита::before { background: var(--цвет-тёплый); }
-  #экран-08.светлый .финал__плита h2 { color: var(--цвет-тёмный-текст); }
-
-  #экран-08.тёмный .финал::before { border-color: color-mix(in srgb, var(--цвет-тёплый) 60%, transparent); }
-  #экран-08.тёмный .финал__плита { background: var(--цвет-фон-карточки); color: var(--цвет-текст); box-shadow: var(--тень-глубокая); }
-  #экран-08.тёмный .финал__плита::before { background: var(--цвет-тёплый); }
-
-  #экран-08.тёмный .финал__плита { --цвет-кнопки: var(--цвет-акцент-яркий); --цвет-на-кнопке: var(--цвет-фон);
-      --цвет-кнопки-навёл: color-mix(in srgb, var(--цвет-акцент-яркий) 78%, var(--цвет-текст)); }
-  #экран-08.тёмный .финал__плита h2 { color: var(--цвет-текст); }
+  #экран-08.светлый, #экран-08.тёмный { background: var(--цвет-фон); color: var(--цвет-текст); }
+  #экран-08.светлый .пятно, #экран-08.тёмный .пятно { background: color-mix(in srgb, var(--цвет-тёмный-фон) 18%, transparent); }
+  #экран-08.светлый .финал::before, #экран-08.тёмный .финал::before { border-color: color-mix(in srgb, var(--цвет-тёплый) 70%, transparent); }
+  #экран-08.светлый .финал__плита, #экран-08.тёмный .финал__плита { background: var(--цвет-тёмный-фон);
+      color: var(--цвет-тёмный-текст); box-shadow: var(--тень-глубокая);
+      --цвет-кнопки: var(--цвет-тёплый); --цвет-на-кнопке: var(--цвет-текст);
+      --цвет-кнопки-навёл: color-mix(in srgb, var(--цвет-тёплый) 82%, var(--цвет-тёмный-текст)); }
+  #экран-08.светлый .финал__плита::before, #экран-08.тёмный .финал__плита::before { background: var(--цвет-тёплый); }
+  #экран-08.светлый .финал__плита h2, #экран-08.тёмный .финал__плита h2 { color: var(--цвет-тёмный-текст); }
 
   @media (max-width: 899px) {
     #экран-08 .финал::before { inset: 12px -10px -12px 12px; }
@@ -1986,19 +1956,15 @@ h2 .хвост-акцент { display: block; font-weight: 600; font-size: .6em;
   #экран-09 .подвал__низ { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 1.5rem;
       margin-top: clamp(24px, 3vw, 40px); padding-top: clamp(14px, 1.6vw, 20px); font-size: var(--кегль-мелкий); }
 
-  #экран-09.светлый .блок__внутри::before { background: var(--цвет-тёплый); }
-  #экран-09.светлый .подвал__лого, #экран-09.светлый h4 { color: var(--цвет-текст); }
-  #экран-09.светлый .подвал__ссылки a { color: var(--цвет-текст-мягкий); }
-  #экран-09.светлый .подвал__разделы a, #экран-09.светлый .подвал__связь a { border-bottom-color: var(--цвет-линия); }
-  #экран-09.светлый .подвал__ссылки a:hover { color: var(--цвет-текст); }
-  #экран-09.светлый .подвал__низ { color: var(--цвет-текст-мягкий); border-top: 1px solid var(--цвет-линия); }
-
-  #экран-09.тёмный .блок__внутри::before { background: var(--цвет-тёплый); }
-  #экран-09.тёмный .подвал__лого, #экран-09.тёмный h4 { color: var(--цвет-тёмный-текст); }
-  #экран-09.тёмный .подвал__ссылки a { color: var(--цвет-тёмный-текст); }
-  #экран-09.тёмный .подвал__разделы a, #экран-09.тёмный .подвал__связь a { border-bottom-color: color-mix(in srgb, var(--цвет-тёмный-текст) 22%, transparent); }
-  #экран-09.тёмный .подвал__ссылки a:hover { color: var(--цвет-тёплый-мягкий); }
-  #экран-09.тёмный .подвал__низ { color: var(--цвет-тёмный-текст); border-top: 1px solid color-mix(in srgb, var(--цвет-тёмный-текст) 22%, transparent); }
+  #экран-09.светлый, #экран-09.тёмный { background: var(--цвет-фон); }
+  #экран-09.светлый .блок__внутри::before, #экран-09.тёмный .блок__внутри::before { background: var(--цвет-тёплый); }
+  #экран-09.светлый .подвал__лого, #экран-09.тёмный .подвал__лого,
+  #экран-09.светлый h4, #экран-09.тёмный h4 { color: var(--цвет-текст); }
+  #экран-09.светлый .подвал__ссылки a, #экран-09.тёмный .подвал__ссылки a { color: var(--цвет-текст-мягкий); }
+  #экран-09.светлый .подвал__разделы a, #экран-09.тёмный .подвал__разделы a,
+  #экран-09.светлый .подвал__связь a, #экран-09.тёмный .подвал__связь a { border-bottom-color: var(--цвет-линия); }
+  #экран-09.светлый .подвал__ссылки a:hover, #экран-09.тёмный .подвал__ссылки a:hover { color: var(--цвет-текст); }
+  #экран-09.светлый .подвал__низ, #экран-09.тёмный .подвал__низ { color: var(--цвет-текст-мягкий); border-top: 1px solid var(--цвет-линия); }
 
   @media (max-width: 899px) {
     #экран-09 .подвал__сетка { grid-template-columns: 1fr; gap: 24px; }
